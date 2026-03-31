@@ -1,0 +1,18 @@
+{
+  "id": "docs-page",
+  "slug": "docs",
+  "meta": {
+    "title": "OlonJS Architecture Specifications v1.5",
+    "description": "Mandatory Standard — Sovereign Core Edition. Canonical Studio actions, SSG, Save to file, and Hot Save."
+  },
+  "sections": [
+    {
+      "id": "docs-main",
+      "type": "tiptap",
+      "data": {
+        "content": "# 📐 OlonJS Architecture Specifications v1.5\n\n**Status:** Mandatory Standard\\\n**Version:** 1.5.0 (Sovereign Core Edition — Architecture + Studio/ICE UX, Path-Deterministic Nested Editing, Deterministic Local Design Tokens, Three-Layer CSS Bridge Contract)\\\n**Target:** Senior Architects / AI Agents / Enterprise Governance\n\nThis tenant follows the current OlonJS source-of-truth model: the tenant app owns content, schemas, theme, and persistence wiring; `@olonjs/core` owns the Studio shell, routing, preview, and editing engine.\n\n---\n\n## Canonical Editorial Flows\n\nThe supported Studio flows are now:\n\n- `SSG` for static HTML and route output.\n- `Save to file` for local JSON persistence back into tenant source files.\n- `Hot Save` for cloud/editorial persistence when the tenant config provides it.\n- `Add Section` for deterministic section lifecycle management inside Studio.\n\nPrevious one-off bake and JSON export paths are no longer part of Studio.\n\n---\n\n## Persistence Model\n\n`@olonjs/core` no longer performs HTML bake or ZIP export. Studio now invokes tenant-provided persistence callbacks:\n\n- `saveToFile(state, slug)`\n- `hotSave(state, slug)`\n\nThis keeps persistence explicit, tenant-owned, and aligned with the current `JsonPagesConfig` contract.\n\n---\n\n## Tenant Source Of Truth\n\n`apps/tenant-alpha` is the DNA source of truth for this tenant. Generated CLI templates are downstream artifacts and should be regenerated from source apps instead of being edited manually.\n\nThe canonical content and design files remain:\n\n- `src/data/config/site.json`\n- `src/data/config/menu.json`\n- `src/data/config/theme.json`\n- `src/data/pages/<slug>.json`\n\n---\n\n## Reference Specs\n\nUse these monorepo sources for the full protocol and architecture details:\n\n- `specs/olonjsSpecs_V_1_5.md`\n- `apps/tenant-alpha/specs/olonjsSpecs_V.1.3.md`\n\nThese source specs are the maintained references for architecture, Studio behavior, and tenant compliance."
+      },
+      "settings": {}
+    }
+  ]
+}
